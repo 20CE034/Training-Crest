@@ -8,5 +8,4 @@
 
 - [x] Course2 - HTML & CSS
 
-- [ ] Course3 - ReactJS 			`active`
-- [ ] Course4 - Redux
+- [ ] Course3 - ReactJS & Redux		`active`
