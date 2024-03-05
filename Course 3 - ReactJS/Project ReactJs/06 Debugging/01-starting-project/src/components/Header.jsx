@@ -1,10 +1,11 @@
-import logo from '../assets/investment-calculator-logo.png';
-
+import logo from '../assets/logo.png';
+import "./Header.css"
 export default function Header() {
   return (
-    <header id="header">
-      <img src={logo} alt="Logo showing a money bag" />
-      <h1>Investment Calculator</h1>
+    <header>
+      <img src={logo} alt="A canvas" />
+      <h1>ReactArt</h1>
+      <p>A community of artists and art-lovers.</p>
     </header>
   );
 }
