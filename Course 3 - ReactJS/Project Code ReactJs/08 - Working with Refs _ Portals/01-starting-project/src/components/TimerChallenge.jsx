@@ -7,8 +7,18 @@ export default function TimerChallenge({ title, targetTime }) {
   const dialog = useRef();
 
   // the player loses if time gets expired
-  const [timerExpired, settimerExpired] = useState(false);
   const [timerStarted, settimerStarted] = useState(false);
+
+  const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
+
+  if (timeRemaining <= 0) {
+    clearInterval(timer.current);
+    dialog.current.open();
+  }
+
+  function handleReset(){
+    settimerStarted()
+  }
 
   function handleStart() {
     console.log("handleStart", targetTime * 1000);
