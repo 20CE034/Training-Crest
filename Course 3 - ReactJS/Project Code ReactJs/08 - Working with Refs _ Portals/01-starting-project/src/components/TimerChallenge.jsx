@@ -17,7 +17,7 @@ export default function TimerChallenge({ title, targetTime }) {
   }
 
   function handleReset() {
-    settimerStarted(targetTime * 1000);
+    setTimeRemaining(targetTime * 1000);
   }
 
   function handleStart() {
