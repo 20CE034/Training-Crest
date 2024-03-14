@@ -1,29 +1,47 @@
 import { useState } from "react";
+
 import Input from "./componenets/Input";
 import NewProject from "./componenets/NewProject";
 import ProjectSidebar from "./componenets/ProjectSidebar";
 import NoProjectSelected from "./componenets/NoProjectSelected";
+import SelectedProject from "./componenets/SelectedProject";
 
 function App() {
-  const [ProjectsState, setProjectsState] = useState({
+  const [projectsState, setProjectsState] = useState({
     selectedProjectID: undefined,
     projects: [],
   });
 
+  function handleAddTask() {}
+  function handleDeleteTask() {}
+  function handleSelectProject() {}
+
   function handleStartAddProject() {
     setProjectsState((prevState) => {
       return {
+        ...prevState,
         selectedProjectID: null,
-        projects: [],
       };
     });
   }
 
+  function handleCancelAddProject() {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectID: null,
+      };
+    });
+  }
+  function handleAddProject() {}
+  function handleDeleteProject() {}
+
   let content;
-  if (ProjectsState.selectedProjectID === null) {
+
+  if (projectsState.selectedProjectID === null) {
     // A Project has been Created but Yet to be Filled. - Explicit
     content = <NewProject />;
-  } else if (ProjectsState.selectedProjectID === undefined) {
+  } else if (projectsState.selectedProjectID === undefined) {
     // No Projects are Created By user Yet. -- Implicit
     content = <NoProjectSelected />;
   }
