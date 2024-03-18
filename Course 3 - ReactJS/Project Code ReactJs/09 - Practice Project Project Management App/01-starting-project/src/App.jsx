@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Input from "./componenets/Input";
+// import Input from "./componenets/Input";
 import NewProject from "./componenets/NewProject";
 import ProjectSidebar from "./componenets/ProjectSidebar";
 import NoProjectSelected from "./componenets/NoProjectSelected";
@@ -8,19 +8,50 @@ import SelectedProject from "./componenets/SelectedProject";
 
 function App() {
   const [projectsState, setProjectsState] = useState({
-    selectedProjectID: undefined,
+    selectedProjectId: undefined,
     projects: [],
+    tasks: [],
   });
 
-  function handleAddTask() {}
-  function handleDeleteTask() {}
-  function handleSelectProject() {}
+  function handleAddTask(text) {
+    setProjectsState((prevState) => {
+      const taskId = Math.random();
+      const newTask = {
+        text: text,
+        projectId: prevState.selectedProjectId,
+        id: taskId,
+      };
+
+      return {
+        ...prevState,
+        tasks: [newTask, ...prevState.tasks],
+      };
+    });
+  }
+
+  function handleDeleteTask(id) {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  }
+
+  function handleSelectProject(id) {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: id,
+      };
+    });
+  }
 
   function handleStartAddProject() {
     setProjectsState((prevState) => {
       return {
         ...prevState,
-        selectedProjectID: null,
+        selectedProjectId: null,
       };
     });
   }
@@ -29,27 +60,71 @@ function App() {
     setProjectsState((prevState) => {
       return {
         ...prevState,
-        selectedProjectID: null,
+        selectedProjectId: undefined,
       };
     });
   }
-  function handleAddProject() {}
-  function handleDeleteProject() {}
+  function handleAddProject(projectData) {
+    setProjectsState((prevState) => {
+      const projectId = Math.random();
+      const newProject = {
+        ...projectData,
+        id: projectId,
+      };
 
-  let content;
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+        projects: [...prevState.projects, newProject],
+      };
+    });
+  }
 
-  if (projectsState.selectedProjectID === null) {
+  function handleDeleteProject() {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined,
+        projects: prevState.projects.filter(
+          (project) => project.id !== prevState.selectedProjectId
+        ),
+      };
+    });
+  }
+
+  const selectedProject = projectsState.projects.find(
+    (project) => project.id === projectsState.selectedProjectId
+  );
+
+  let content = (
+    <SelectedProject
+      project={selectedProject}
+      onDelete={handleDeleteProject}
+      onAddTask={handleAddTask}
+      onDeleteTask={handleDeleteTask}
+      tasks={projectsState.tasks}
+    />
+  );
+
+  if (projectsState.selectedProjectId === null) {
     // A Project has been Created but Yet to be Filled. - Explicit
-    content = <NewProject />;
-  } else if (projectsState.selectedProjectID === undefined) {
+    content = (
+      <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject} />
+    );
+  } else if (projectsState.selectedProjectId === undefined) {
     // No Projects are Created By user Yet. -- Implicit
-    content = <NoProjectSelected />;
+    content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
   }
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <ProjectSidebar onStartAddProject={handleStartAddProject} />
-      <NewProject onStartAddProject={handleStartAddProject} />
+      <ProjectSidebar
+        onStartAddProject={handleStartAddProject}
+        projects={projectsState.projects}
+        onSelectProject={handleSelectProject}
+        selectedProjectId={projectsState.selectedProjectId}
+      />
+      {content}
     </main>
   );
 }
