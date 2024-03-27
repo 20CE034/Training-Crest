@@ -5,7 +5,10 @@ import Answers from "./Answers.jsx";
 import QUESTIONS from "../questions.js";
 
 export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
-  const [answer, setAnswer] = useState({ selectedAnswer: "", isCorrect: null });
+  const [answer, setAnswer] = useState({
+    selectedAnswer: "",
+    isCorrect: null,
+  });
   function handleSelectAnswer(answer) {
     setAnswer({
       selectedAnswer: answer,

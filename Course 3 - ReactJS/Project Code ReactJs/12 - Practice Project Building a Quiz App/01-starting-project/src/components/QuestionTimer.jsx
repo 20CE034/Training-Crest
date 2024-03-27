@@ -5,14 +5,22 @@ export default function QuestionTimer({ onTimeout, timeout }) {
 
   //   timeout
   useEffect(() => {
-    setTimeout(onTimeout, timeout);
+    const timer = setTimeout(onTimeout, timeout);
     console.log(setTimeout(onTimeout, timeout));
+    return () => {
+      clearTimeout(timer);
+    };
   }, [onTimeout, timeout]);
 
   //   intervalic re-rendering of component
   useEffect(() => {
     setInterval(() => {
-      setRemainingTime((prevRemainingTime) => prevRemainingTime - 100);
+      const interval = setRemainingTime(
+        (prevRemainingTime) => prevRemainingTime - 100
+      );
+      return () => {
+        clearTimeout(interval);
+      };
     }, 100);
   }, []);
 
