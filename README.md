@@ -10,7 +10,7 @@ Reporting to - Nishant Vichhi [E], Trusha Patel[I]
 
 Course 1 & 2 [HTML/CSS/JavaScript] - https://20ce034.github.io/How-much-of-NEWS-are-you/
 
-Course 3 [ReactJs/Redux/Saga] - 20ce034.github.io/chart-app/
+Course 3 [ReactJs/Redux/Saga] - https://20ce034.github.io/chart-app/
 
 ## Courses Started from 03 January 2024
 

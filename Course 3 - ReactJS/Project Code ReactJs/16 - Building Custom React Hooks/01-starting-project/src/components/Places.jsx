@@ -1,4 +1,4 @@
-export default function Places({
+ export default function Places({
   title,
   places,
   fallbackText,
