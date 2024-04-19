@@ -18,11 +18,11 @@ Course 3 [ReactJs/Redux/Saga] - https://20ce034.github.io/chart-app/
 
 - [x] Course2 - HTML & CSS
 
-- [ ] Course3 - ReactJS & Redux `active`
+- [x] Course3 - ReactJS & Redux 
 
-- [ ] Redux - Saga
+- [ ] Redux - Saga `active`
 
-- [ ] REST API
+- [ ] REST API `active`
 
 - [ ] Typescript
 
