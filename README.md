@@ -8,11 +8,14 @@ Reporting to - Nishant Vichhi [E], Trusha Patel[I]
 
 # Along Side projects with Course :
 
-## Course 1 & 2 [HTML/CSS/JavaScript]  
+## Course 1 & 2 [HTML/CSS/JavaScript]
+
 https://20ce034.github.io/How-much-of-NEWS-are-you/
 
-## Course 3 [ReactJs/Redux/Saga] 
- https://20ce034.github.io/chart-app/
+## Course 3 [ReactJs/Redux/Saga]
+
+- https://20ce034.github.io/chart-app/
+- Pokemon App
 
 ## Courses Started from 03 January 2024
 
@@ -20,14 +23,14 @@ https://20ce034.github.io/How-much-of-NEWS-are-you/
 
 - [x] Course2 - HTML & CSS
 
-- [x] Course3 - ReactJS & Redux 
+- [x] Course3 - ReactJS & Redux
 
-- [x] Redux - Saga 
+- [x] Redux - Saga
 
-- [x] REST API 
+- [x] REST API
 
-- [ ] Typescript    `active`
+- [ ] Typescript `active`
 
-- [ ] The Git & Github Bootcamp    `active`
+- [ ] The Git & Github Bootcamp `active`
 
 - [ ] Docker Mastery
