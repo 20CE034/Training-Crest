@@ -22,12 +22,12 @@ https://20ce034.github.io/How-much-of-NEWS-are-you/
 
 - [x] Course3 - ReactJS & Redux 
 
-- [ ] Redux - Saga `active`
+- [x] Redux - Saga 
 
-- [ ] REST API `active`
+- [x] REST API 
 
-- [ ] Typescript
+- [ ] Typescript    `active`
 
-- [ ] The Git & Github Bootcamp
+- [ ] The Git & Github Bootcamp    `active`
 
 - [ ] Docker Mastery
