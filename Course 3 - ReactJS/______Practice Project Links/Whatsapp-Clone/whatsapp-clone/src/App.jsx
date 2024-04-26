@@ -1,7 +1,14 @@
-import { useState } from "react";
 import { ContactProvider } from "./contexts/ContactsProvider.js";
+import Dashboard from "./components/Dashboard";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <ContactProvider>
+        <Dashboard id={id} />
+      </ContactProvider>
+    </>
+  );
 }
 
 export default App;
