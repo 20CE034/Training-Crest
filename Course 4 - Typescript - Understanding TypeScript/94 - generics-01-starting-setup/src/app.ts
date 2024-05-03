@@ -34,7 +34,9 @@ let firstUser: Partial<User> = {
   firstName: "John",
 };
 
-    // live usecase:
-const StyledButton = styled('button')<Partial<{isRed: boolean}>>`
+// live usecase:
+// const StyledButton = styled("button")(({ isRed }) => isRed && "color: red;");
 
-${ ({isRed}) => isRed && 'color: red;' }
+// const StyledButton = styled("button")(
+//   <Partial<{ isRed: boolean }>>(({ isRed }) => isRed && "color: red;")
+// );
