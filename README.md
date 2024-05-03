@@ -6,7 +6,7 @@ Assigned Tech Stack - <strong> ReactJs</strong>
 
 Reporting to - Nishant Vichhi [E], Trusha Patel[I]
 
-# Along Side projects with Course :
+# Practice Projects with Course :
 
 ## Course 1 & 2 [HTML/CSS/JavaScript]
 
