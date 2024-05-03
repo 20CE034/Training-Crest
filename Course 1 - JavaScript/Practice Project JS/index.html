@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.jpg" />
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <title>N&gt;E&gt;W&gt;S&gt;</title>
+  </head>
+
+  <body>
+    <div id="content">
+      <div id="over"></div>
+      <div id="move">
+        <span class="material-symbols-rounded fix-size">location_on</span>
+      </div>
+      <div class="panel" id="intro">
+        <div class="contents">
+          <h1>
+            <img class="logo" src="./images/icon.jpg" alt="logo" />
+          </h1>
+          <div class="content"><a class="text-shadows">કયુ ગામ?</a></div>
+          <!-- <button onclick="startTest();">પરીક્ષણ શરૂ કરો!</button> -->
+
+          <div class="cont">
+            <button onclick="startTest();" class="button">
+              <div class="blob">
+                <svg
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 310 350"
+                >
+                  <path
+                    d="M156.4,339.5c31.8-2.5,59.4-26.8,80.2-48.5c28.3-29.5,40.5-47,56.1-85.1c14-34.3,20.7-75.6,2.3-111  c-18.1-34.8-55.7-58-90.4-72.3c-11.7-4.8-24.1-8.8-36.8-11.5l-0.9-0.9l-0.6,0.6c-27.7-5.8-56.6-6-82.4,3c-38.8,13.6-64,48.8-66.8,90.3c-3,43.9,17.8,88.3,33.7,128.8c5.3,13.5,10.4,27.1,14.9,40.9C77.5,309.9,111,343,156.4,339.5z"
+                  />
+                </svg>
+              </div>
+              <div class="line"></div>
+              <div class="text">
+                <p class="dance">પરીક્ષણ શરૂ કરો!</p>
+              </div>
+            </button>
+          </div>
+
+          <!-- <span class="material-symbols-rounded fix-size">device_reset</span> -->
+        </div>
+      </div>
+
+      <div class="panel" id="game">
+        <div class="contents">
+          <h2>Loading...</h2>
+          <button onclick="handleAnswer(0);"></button>
+          <button onclick="handleAnswer(1);"></button>
+          <button onclick="handleAnswer(2);"></button>
+          <button onclick="handleAnswer(3);"></button>
+          <!-- Added for the 4th option -->
+        </div>
+      </div>
+
+      <div class="panel" id="results">
+        <div class="contents">
+          આ results તમને
+          <div id="score">
+            <span class="height">50</span>%
+            <div id="cardinal"></div>
+          </div>
+          ના ગણે છે.
+          <div id="rating">Your rating will go here.</div>
+
+          <div id="sharing-buttons">
+            <div class="grid-container">
+              <div class="frame">
+                <a href="#" class="btn">
+                  <i class="fa fa-share-alt" onclick="shareResult()"></i>
+                </a>
+                <a href="#" class="btn">
+                  <i class="fab fa-skype" onclick="shareSkype()" style="color: rgb(37, 187, 238)"></i>
+                </a>
+                <a href="#" class="btn">
+                  <i
+                    class="fab fa-facebook"
+                    onclick="shareFacebook()"
+                    style="color: #00acee"
+                  ></i>
+                </a>
+                <a href="#" class="btn">
+                  <i class="fab fa-linkedin-in" onclick="shareLinkedIn()" style="color: #0e76a8"></i>
+                </a>
+                <a href="#" class="btn">
+                  <i
+                    class="fab fa-whatsapp"
+                    onclick="shareWhatsApp()"
+                    style="color: #296b00"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <!-- <script src="./js/script.js"></script> -->
+  <!-- <script src="./js/rescript.js"></script> -->
+  <script src="./js/guscript.js"></script>
+</html>
