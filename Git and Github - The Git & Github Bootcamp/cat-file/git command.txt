@@ -1,0 +1,161 @@
+set the username : git config --globle user.name "enter name"
+show username : git config user.name
+
+set the email : git config --globle user.email "enter email"
+show email  : git config user.email 
+
+
+git add . :  files go on stages area
+git add <file1> <file2>  :  using this you can create a group and then do commit 
+
+git commit -m "your message"  :  files save on repository 
+
+git reset :  reset a staging area
+
+git rm <file1> : using this command remove specify file on staging area
+
+git log --oneline  : check for all commit in one line
+
+git commit --amend  : this command use only when you want to change  only last commit,
+
+.gitignore  
+  node_modules/  : / means it is a directory
+  .env  
+   *.js  //  all file ignore who ends with .sj
+  .gitignore // you can also ignore a .gitignore file
+
+git branch // show all branch , * indicates it current branch
+
+git branch -v  // give more data about the all branches
+
+git branch <branch_name>  // create  a new branch
+
+git switch <branch_name>  //  branch switching   --> we always add and commit changes before we switch branch 
+                                                 --> you can switch the branch without commite but your changes file must be untract
+
+git switch -c <branch_name>  // creat and switch branch    
+
+git branch -d <branch name>   // use for delete branch
+
+git branch -m <branch name> // RENAME branch name
+
+-----commit-----commit --- master ------ oldies  // 
+ git merge oldies  // fast forword merge //  all oldies commite add in master
+
+
+----commit ---- commit  ----  commit - master
+                  |                             --> if i have to do  merge to branch but inside this some files are conflic  so first resolve them
+                                                --> resolve conglic and commite this files auotmatically merge 
+                  |                        
+                 commit  -> oldies
+
+
+git diff --> gives to changes bitween stages area and current file  
+
+git diff HEAD --> changes bitween last commit and current file 
+
+git diff branch1 .. branch2  ->  gives to difference bitween two branchs
+
+git diff commit1 .. commit2 --> gives to difference bitween two commits
+
+git stash --> they save your current uncommited ,your staged and unstaged changes so that you can come back to them 
+
+git stash pop --> remove the most recently stash changes in stash
+              --> move most recently selved changes into their working directry
+
+git stash apply --> move most recently selved changes into their working directry
+                --> stash will remain same
+git stash list --> gives me list of stash
+
+git stash apply stash@2 -> apply a specific stash
+
+git stash drop stash@2 --> drop specific stash
+
+git stash clear -->  clear the stash
+
+git checkout <hash of commit>  --> detached head and pointing to current comit
+
+git switch master ->> head attached to master branch
+
+git checkout HEAD`1 --> go back to commit without use hase 
+
+git switch - --> it takes me back to where i left on
+
+git checkout -- <file1> <file2>  --> will reset this file back whatever it looked like in your last commit
+git restore <file1>
+
+git restore --source HEAD~1 <file1> -> will reset this file back to your head~1 commit
+
+git restore --staged <file1>  --> use to file1 do to unstaged
+
+git reset <commit_hash>   --> not remove content of files but remove commits up to commit_hash
+ 
+git reset -hard <commit_hash>  --> remove content of files or commite up to commit_hash
+
+git revert <commit_hash>  -> same as git revert but it used if you want the history preserved of bed commite 
+
+
+git remote add origin <URL>   
+
+git remote -v 
+
+git remote remove <name>  
+
+git push <remote> <branch>
+git push origin main
+
+
+git push <remote> <local-branch>:<remote-branch>  --> take a local branch and push it up to on remote-branch
+
+git push -u origin master --> set the remote as upstream 
+
+git branch -M main -- rename my current branch to main
+
+
+--> for the contribute
+                   
+                 pull request
+                --------------->>
+   fork repo  <----------------  original repo
+           /\         fork            /
+            \                        /
+              \                     /  pull
+       push      \                 /
+                    \            \/
+                      local machin 
+
+
+
+git rebase master --> you don't have need a merge commi -> give you linear structure of commits --> all commits of feat branch will come up
+
+rebase use case :  1) can be used insted of git merge 2) edit commit history , rewrite history
+
+git rebase -i HEAD`9 --> change commits
+
+
+//  git tags
+
+git tag -l ""  --> you can filter some specific from all tag
+
+git checkout <tag_name>  --> will go on this chec -->  If you want to make changes, it's recommended to create a new branch from that tag to work on
+
+git tag <tag_name> ->  for creating  lightweght tag
+
+git tag -a <tag_name> -> for creating annotated tag
+
+git show <tag_name>  --> used to display detailed information about a particular tag
+ 
+git tag <tag_name> <commit_hash> --> used to create a new tag at specific commit
+
+git tag -d <tag_name>  --> used to delete 
+
+
+git reflog show HEAD --> list of recent actions that have affected the HEAD pointer, such as commits, checkouts, merges, and other operations
+git reflog show HEAD@{two.days.ago}  --> used to display the reflog entries for the HEAD (current branch) from two days ago
+
+
+
+//   adding a alias
+
+git config --global alias.<alias_name>  <current_name>
+git config --global alias.cm "commit -m"
