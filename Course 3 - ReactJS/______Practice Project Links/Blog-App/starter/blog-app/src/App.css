@@ -1,0 +1,14 @@
+.raleway {
+  font-family: "Raleway", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-feature-settings: "lnum" 1 !important;
+}
+.raleway-m {
+  font-family: "Raleway", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400 !important;
+  font-style: normal;
+  font-feature-settings: "lnum" 1 !important;
+}

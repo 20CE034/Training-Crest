@@ -1,3 +1,10 @@
+https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+Use git commit --amend to change your latest log message.
+Use git commit --amend to make modifications to the most recent commit.
+Use git rebase to combine commits and modify history of a branch.
+git rebase -i gives much more fine grained control over history modifications than a standard git rebase.
+
+
 set the username : git config --globle user.name "enter name"
 show username : git config user.name
 
