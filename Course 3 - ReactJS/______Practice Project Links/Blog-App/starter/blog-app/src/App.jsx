@@ -1,54 +1,50 @@
-import NavBar from "./components/NavBar";
-import BottomBar from "./components/BottomBar";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Body from "./components/Body";
-import AuthorPage from "./components/AuthorPage";
+import Dashboard from "./components/Dashboard";
+import AuthorPage from "./components/Profile";
 import PostPage from "./components/PostPage";
 import MostLikedPost from "./components/MostLikedPost";
 import MostCommentedPost from "./components/MostCommentedPost";
 import ErrorPage from "./components/ErrorPage";
 
+import Root from "./components/Root";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Body />,
-    exact: true,
+    element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/profile/:authodId",
-    element: <AuthorPage />,
     exact: true,
-  },
-  {
-    path: "/post/:postId",
-    element: <PostPage />,
-    exact: true,
-  },
-  {
-    path: "/:pageNo",
-    element: <Body />,
-    exact: true,
-  },
-  {
-    path: "/MostLikedPost",
-    element: <MostLikedPost />,
-    exact: true,
-  },
-  {
-    path: "/MostCommentedPost",
-    element: <MostCommentedPost />,
-    exact: true,
+    children: [
+      { path: "/", element: <Dashboard /> },
+      {
+        path: "/profile/:authodId",
+        element: <AuthorPage />,
+      },
+      {
+        path: "/post/:postId",
+        element: <PostPage />,
+      },
+      {
+        path: "/:pageNo",
+        element: <Dashboard />,
+      },
+      {
+        path: "/MostLikedPost",
+        element: <MostLikedPost />,
+      },
+      {
+        path: "/MostCommentedPost",
+        element: <MostCommentedPost />,
+      },
+    ],
   },
 ]);
 
 function App() {
   return (
     <>
-      <NavBar />
       <RouterProvider router={router} />
-      <BottomBar />
     </>
   );
 }

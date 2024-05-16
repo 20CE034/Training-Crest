@@ -1,5 +1,4 @@
 import Container from "@mui/material/Container";
-
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
@@ -37,11 +36,15 @@ export default function BottomBar() {
             justifyContent: "center",
             display: "flex",
             mb: 2,
-            
           }}
         >
-          <Typography variant="caption" color="initial" className="raleway" sx={{fontSize: "20px"}}>
-            Copyright ©2024 - Dev Gundalia
+          <Typography
+            variant="caption"
+            color="initial"
+            className="raleway"
+            sx={{ fontSize: "20px" }}
+          >
+            Made with &hearts; by Dev Gundalia - 2024
           </Typography>
         </Box>
       </Container>
