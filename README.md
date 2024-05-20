@@ -10,12 +10,14 @@ Reporting to - Nishant Vichhi [E], Trusha Patel[I]
 
 ## Course 1 & 2 [HTML/CSS/JavaScript]
 
-https://20ce034.github.io/How-much-of-NEWS-are-you/
+Quiz App - https://20ce034.github.io/How-much-of-NEWS-are-you/
+3nplusone - https://20ce034.github.io/3nplusone/
 
 ## Course 3 [ReactJs/Redux/Saga]
 
-- https://20ce034.github.io/chart-app/
-- Pokemon App
+- Chart App - https://20ce034.github.io/chart-app/
+- Pokemon App - https://poke-app-u98b.onrender.com/
+- Blog App - https://blog-app-xh5o.onrender.com/
 
 ## Courses Started from 03 January 2024
 
