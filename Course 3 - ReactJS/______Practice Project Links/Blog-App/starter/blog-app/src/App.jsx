@@ -1,13 +1,15 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
-import AuthorPage from "./components/Profile";
+import Profile from "./components/Profile";
 import PostPage from "./components/PostPage";
-import MostLikedPost from "./components/MostLikedPost";
-import MostCommentedPost from "./components/MostCommentedPost";
+import Posts from "./components/Posts";
 import ErrorPage from "./components/ErrorPage";
-
+import Authors from "./components/Authors";
 import Root from "./components/Root";
+import { LoadingProvider } from "./context/LoadingContext";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 const router = createBrowserRouter([
   {
@@ -18,24 +20,20 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       {
-        path: "/profile/:authodId",
-        element: <AuthorPage />,
+        path: "/profile/:authorId",
+        element: <Profile />,
       },
       {
         path: "/post/:postId",
         element: <PostPage />,
       },
       {
-        path: "/:pageNo",
-        element: <Dashboard />,
+        path: "/authors",
+        element: <Authors />,
       },
       {
-        path: "/MostLikedPost",
-        element: <MostLikedPost />,
-      },
-      {
-        path: "/MostCommentedPost",
-        element: <MostCommentedPost />,
+        path: "/posts",
+        element: <Posts />,
       },
     ],
   },
@@ -44,7 +42,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <LoadingProvider>
+          <RouterProvider router={router} />
+        </LoadingProvider>
+      </Provider>
     </>
   );
 }

@@ -1,18 +1,18 @@
-import React from 'react'
-import './App.css'
+import React from "react";
+import "./App.css";
 // import { Button } from "reactstrap";
 
-import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap/dist/css/bootstrap.css";
 
-import Body from './Pages/HomePage/Body'
-import AuthorPage from './Pages/ProfilePage/Profile'
+import Body from "./Pages/HomePage/Body";
+import AuthorPage from "./Pages/ProfilePage/Profile";
 // import Pagination from "./components/Pagination/Pagination"
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import PostPage from './Pages/PostPage/PostPage'
-import MostLikedPost from './Pages/MostLikedPost/MostLikedPost'
-import NavigationBar from './components/NavBar/NavigationBar'
-import Footer from './components/Footer/Footer'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PostPage from "./Pages/PostPage/PostPage";
+import MostLikedPost from "./Pages/MostLikedPost/MostLikedPost";
+import NavigationBar from "./components/NavBar/NavigationBar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         {/* <Body/> */}
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

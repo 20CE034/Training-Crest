@@ -9,7 +9,6 @@ export default function BottomBar() {
       className="raleway"
       sx={{
         marginTop: "calc(10% + 60px)",
-        width: "100%",
         position: "static",
         bottom: 0,
         fontSize: "30px",

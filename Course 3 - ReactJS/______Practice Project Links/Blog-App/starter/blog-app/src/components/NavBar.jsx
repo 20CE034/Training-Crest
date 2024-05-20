@@ -5,12 +5,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function NavBar() {
+  const location = useLocation();
+  const currPath = location.pathname;
+  console.log(currPath);
 
-  
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, margin: 0 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -44,42 +47,31 @@ export default function NavBar() {
             component="div"
             sx={{
               fontWeight: 400,
-              mx: 2,
+              mx: 1,
             }}
           >
-            <Link to="/" style={{ textDecoration: "none", color: "#FFF" }}>
+            <Link
+              to="/authors"
+              style={{ textDecoration: "none", color: "#FFF" }}
+            >
               {" "}
               Authors
             </Link>
           </Typography>
+
           <Typography
             className="raleway"
             variant="h7"
             noWrap
             component="div"
-            sx={{
-              fontWeight: 400,
-              mx: 2,
-            }}
+            sx={{ fontWeight: 400, flexGrow: 6, mx: 1 }}
           >
-            <Link to="/" style={{ textDecoration: "none", color: "#FFF" }}>
+            <Link to="/posts" style={{ textDecoration: "none", color: "#FFF" }}>
               {" "}
-              Most Liked
+              Posts
             </Link>
           </Typography>
-          <Typography
-            className="raleway"
-            variant="h7"
-            noWrap
-            component="div"
-            sx={{ fontWeight: 400, flexGrow: 6, mx: 2 }}
-          >
-            <Link to="/" style={{ textDecoration: "none", color: "#FFF" }}>
-              {" "}
-              Most Commented
-            </Link>
-          </Typography>
-          <Search />
+          {currPath == "/authors" ? <Search /> : <></>}
         </Toolbar>
       </AppBar>
     </Box>

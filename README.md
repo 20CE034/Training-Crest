@@ -29,8 +29,8 @@ https://20ce034.github.io/How-much-of-NEWS-are-you/
 
 - [x] REST API
 
-- [ ] Typescript `active`
+- [x] Typescript 
 
-- [ ] The Git & Github Bootcamp `active`
+- [x] The Git & Github Bootcamp 
 
-- [ ] Docker Mastery
+- [x] Docker Mastery

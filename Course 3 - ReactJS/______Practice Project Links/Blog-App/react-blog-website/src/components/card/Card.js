@@ -2,6 +2,7 @@ import React, {memo} from 'react'
 import {Link} from 'react-router-dom'
 
 function Card(props) {
+  console.log(props);
   return (
     <div
       className="card specialCard mx-auto"
