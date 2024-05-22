@@ -1,0 +1,9 @@
+// posts
+export const FETCH_POSTS_REQ = "FETCH_POSTS_REQ"
+export const FETCH_POSTS_SUCC = "FETCH_POSTS_SUCC"
+export const FETCH_POSTS_FAIL = "FETCH_POSTS_FAIL"
+
+// authors
+export const FETCH_AUTHORS_REQ = "FETCH_AUTHORS_REQ"
+export const FETCH_AUTHORS_SUCC = "FETCH_AUTHORS_SUCC"
+export const FETCH_AUTHORS_FAIL = "FETCH_AUTHORS_FAIL"

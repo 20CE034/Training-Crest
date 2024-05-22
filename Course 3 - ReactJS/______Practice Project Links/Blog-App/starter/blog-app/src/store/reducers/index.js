@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-
-import postsReducer from "./postsReducer";
+import authorsReducer from "./authorsSlice";
+import postsReducer from "./postsSlice";
 
 const reducers = combineReducers({
   posts: postsReducer,
+  authors: authorsReducer,
 });
 export default reducers;

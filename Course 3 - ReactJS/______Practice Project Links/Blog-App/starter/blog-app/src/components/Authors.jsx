@@ -1,5 +1,7 @@
-import { useState } from "react";
-import db from "../utils/db2.json";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { fetchAuthorsReq } from "../store/reducers/authorsSlice";
+// import db from "../utils/db2.json";
 import AspectRatio from "@mui/joy/AspectRatio";
 import { Link } from "react-router-dom";
 import Card from "@mui/joy/Card";
@@ -9,21 +11,27 @@ import Typography from "@mui/joy/Typography";
 import PaginationItem from "@mui/material/PaginationItem";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-
 import { useSearchContext } from "../context/SearchContext";
+import GradientCircularProgress from "./GradientCircularProgress";
 
 const itemsPerPage = 8;
 
 export default function Authors() {
-  
   const [currentPage, setCurrentPage] = useState(1);
   const { searchTerm } = useSearchContext();
 
+  const dispatch = useDispatch();
+  const { authors, loading, error } = useSelector((state) => state.authors);
+
+  useEffect(() => {
+    dispatch(fetchAuthorsReq());
+  }, [dispatch]);
+  
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
 
-  const filteredAuthors = Object.values(db.authors).filter(
+  const filteredAuthors = Object.values(authors).filter(
     (author) =>
       author.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       author.lastName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -35,6 +43,10 @@ export default function Authors() {
   const endIndex = startIndex + itemsPerPage;
   const currentData = filteredAuthors.slice(startIndex, endIndex);
   console.log("data", currentData);
+
+  if (loading) return <GradientCircularProgress />;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <>
       <div

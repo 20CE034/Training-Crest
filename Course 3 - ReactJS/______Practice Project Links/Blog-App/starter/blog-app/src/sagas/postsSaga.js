@@ -1,28 +1,33 @@
-import {  put, takeEvery } from "redux-saga/effects";
-import {
- 
-  fetchPostsSuccess,
-  fetchPostsFailure,
-} from "../store/actions/postsActions";
-import db from "../utils/db.json"; // Import your static data
-
-// Worker Saga - Fetching Req
+import { call, put, takeEvery } from 'redux-saga/effects';
+import fetchAPI from "./fetchAPI"
+import { fetchPostsSuccess, fetchPostsFailure, fetchPostsReq } from '../store/reducers/postsSlice';
+const url = import.meta.env.VITE_API_URL;
+// console.log(url);
 
 function* fetchPosts() {
   try {
-    const posts = db.posts.map((post) => ({
+    const data = yield call(fetchAPI, url);
+    const posts = data.posts.map((post) => ({
       ...post,
       datePublished: new Date(post.datePublished).toLocaleString(),
     }));
+
     yield put(fetchPostsSuccess(posts));
   } catch (error) {
-    yield put(fetchPostsFailure(error.toString()));
+
+    let errorMessage = "An unexpected error occurred.";
+    if (error.message.includes("HTTP error!")) {
+      errorMessage = `Error: ${error.message}`;
+    } else if (error.message === "Failed to fetch") {
+      errorMessage = "Error: No response received from the server.";
+    } else {
+      errorMessage = `Error: ${error.message}`;
+    }
+
+    yield put(fetchPostsFailure(errorMessage));
   }
 }
 
-// Watcher Saga - call the above function (watcher) based on action
-function* postsSaga() {
-  yield takeEvery("FETCH_POSTS_REQ", fetchPosts);
+export default function* watchFetchPosts() {
+  yield takeEvery(fetchPostsReq.type, fetchPosts);
 }
-
-export default postsSaga;

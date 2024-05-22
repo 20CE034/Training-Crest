@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 export default function NavBar() {
   const location = useLocation();
   const currPath = location.pathname;
-  console.log(currPath);
+  // console.log(currPath);
 
   return (
     <Box sx={{ flexGrow: 1, margin: 0 }}>
@@ -37,7 +37,7 @@ export default function NavBar() {
           >
             <Link to="/" style={{ textDecoration: "none", color: "#FFF" }}>
               {" "}
-              Blog App
+              Blog Gobble
             </Link>
           </Typography>
           <Typography

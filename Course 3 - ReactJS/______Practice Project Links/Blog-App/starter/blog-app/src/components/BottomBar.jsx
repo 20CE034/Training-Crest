@@ -26,7 +26,7 @@ export default function BottomBar() {
             my: 1,
           }}
         >
-          <div>Blog - App</div>
+          <div>BlogGobble</div>
         </Box>
 
         <Box

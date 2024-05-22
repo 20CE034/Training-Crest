@@ -7,6 +7,9 @@ import Posts from "./components/Posts";
 import ErrorPage from "./components/ErrorPage";
 import Authors from "./components/Authors";
 import Root from "./components/Root";
+import BasicFormControl from "./components/CreatePost";
+import CreateProfile from "./components/CreateProfile";
+import ViewPost from "./components/ViewPost";
 import { LoadingProvider } from "./context/LoadingContext";
 import { Provider } from "react-redux";
 import store from "./store/store";
@@ -34,6 +37,18 @@ const router = createBrowserRouter([
       {
         path: "/posts",
         element: <Posts />,
+      },
+      {
+        path: "/createprofile",
+        element: <CreateProfile />,
+      },
+      {
+        path: "/addpost",
+        element: <BasicFormControl />,
+      },
+      {
+        path: "/viewpost",
+        element: <ViewPost />,
       },
     ],
   },
