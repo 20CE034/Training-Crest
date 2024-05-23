@@ -16,7 +16,8 @@ import Select from "@mui/material/Select";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import CommentIcon from "@mui/icons-material/Comment";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import { Typography } from "@mui/joy";
+import { Typography } from "@mui/material";
+import { useSearchContext } from "../context/SearchContext";
 
 const columns = [
   {
@@ -74,20 +75,17 @@ const columns = [
   {
     field: "datePublished",
     headerName: "Date",
-    width: 700,
+    width: 560,
     headerClassName: "theme-header",
   },
 ];
 
 export default function Posts() {
-  let userChoice = "x";
-  const [sortChoice, setSortChoice] = useState("");
-  if (sortChoice == 10) userChoice = "numLikes";
-  else if (sortChoice == 20) userChoice = "numComments";
-  else if (sortChoice == 30) userChoice = "Reset";
-
   const dispatch = useDispatch();
   const { posts, loading, error } = useSelector((state) => state.posts);
+  const { searchTerm } = useSearchContext(); // Use the search context
+
+  const [sortChoice, setSortChoice] = useState("");
 
   useEffect(() => {
     dispatch(fetchPostsReq());
@@ -96,26 +94,23 @@ export default function Posts() {
   if (loading) return <GradientCircularProgress />;
   if (error) return <div>Error: {error}</div>;
 
+  // Filter posts based on search term
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const handleChange = (event) => {
     setSortChoice(event.target.value);
   };
 
-  console.log(sortChoice);
   return (
     <div style={{ height: 500, width: "100%" }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      ></div>
-      <Box
-        sx={{
-          flexGrow: 1,
-        }}
-      >
-        <AppBar position="static" sx={{ bgcolor: "#78a8f5", boxShadow: 29 }}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" sx={{
+          bgcolor: "#78a8f5",
+          boxShadow: 29,
+          borderTopRightRadius: "20px"
+        }}>
           <Toolbar variant="dense" sx={{ borderColor: "white" }}>
             <Box sx={{ minWidth: 120, color: "white", borderColor: "white" }}>
               <FormControl
@@ -148,7 +143,6 @@ export default function Posts() {
                     borderColor: "white",
                     fontFamily: "Raleway",
                     fontWeight: "bolder",
-
                     "&:hover": { borderWidth: 2.5, borderColor: "#c4dbff" },
                     my: 0.2,
                   }}
@@ -259,20 +253,23 @@ export default function Posts() {
           }}
           sortModel={[
             {
-              field: userChoice,
+              field:
+                sortChoice === 10
+                  ? "numLikes"
+                  : sortChoice === 20
+                    ? "numComments"
+                    : "",
               sort: "desc",
             },
           ]}
           className="raleway"
-          rows={posts}
+          rows={filteredPosts}
           columns={columns}
-          // getRowId={(row) => row.authorId} // Ensure this matches your unique identifier
           initialState={{
             pagination: {
               paginationModel: { page: 0, pageSize: 8 },
             },
           }}
-          // pageSizeOptions={[5, 10]}
           disableColumnMenu
           disableColumnFilter
           disableColumnSorting

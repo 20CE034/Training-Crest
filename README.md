@@ -36,3 +36,5 @@ Quiz App - https://20ce034.github.io/How-much-of-NEWS-are-you/
 - [x] The Git & Github Bootcamp 
 
 - [x] Docker Mastery
+
+- [] Next.js & React - The Complete Guide `active`

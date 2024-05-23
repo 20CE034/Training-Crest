@@ -1,0 +1,12 @@
+.dashboard-background {
+    background-image: url('https://i.imgur.com/D61F4wI.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* optional */
+  }
+  

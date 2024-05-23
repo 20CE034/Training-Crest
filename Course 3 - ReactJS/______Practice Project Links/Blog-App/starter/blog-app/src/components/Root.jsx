@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
-import NavBar from "../components/NavBar";
-import BottomBar from "../components/BottomBar";
+import NavBar from "./Bars/NavBar";
+import BottomBar from "./Bars/BottomBar";
 import { SearchProvider } from "../context/SearchContext";
 import { useLoadingContext } from "../context/LoadingContext";
 import GradientCircularProgress from "./GradientCircularProgress";

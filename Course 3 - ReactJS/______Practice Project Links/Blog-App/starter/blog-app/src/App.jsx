@@ -1,4 +1,4 @@
-import "./App.css";
+import "./css/App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
