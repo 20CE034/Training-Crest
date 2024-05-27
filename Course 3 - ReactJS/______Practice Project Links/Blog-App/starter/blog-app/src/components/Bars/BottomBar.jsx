@@ -7,30 +7,34 @@ import { useLocation } from "react-router-dom";
 export default function BottomBar() {
   const location = useLocation();
   const currPath = location.pathname;
-  var positionSet = "";
+  var positionSet,
+    widthSet = "";
   var marginVar = 0;
   // console.log(currPath);
   if (currPath == "/") {
+    widthSet = "100%";
     marginVar = 0;
     positionSet = "fixed";
   } else if (currPath == "/posts") {
     marginVar = 40;
     positionSet = "static";
+    widthSet = null;
   } else {
+    widthSet = null;
     marginVar = 30;
     positionSet = "static";
   }
 
   return (
     <Paper
-      className="raleway"
+      className="raleway bottombar-background"
       sx={{
         borderTopRightRadius: "30px",
         borderTopLeftRadius: "30px",
         backgroundColor: "#c4dbff",
         position: positionSet,
         bottom: 0,
-        width: "100%",
+        width: widthSet,
         marginTop: marginVar,
         fontSize: "30px",
       }}
@@ -38,7 +42,7 @@ export default function BottomBar() {
       square
       variant="outlined"
     >
-      <Container maxWidth="lg">
+      <Container className="bottom-container" maxWidth="lg">
         <Box
           sx={{
             flexGrow: 1,
@@ -60,7 +64,6 @@ export default function BottomBar() {
         >
           <Typography
             variant="caption"
-            color="initial"
             className="raleway"
             sx={{ fontSize: "20px" }}
           >

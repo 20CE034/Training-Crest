@@ -92,7 +92,7 @@ export default function CreateProfile() {
               <Typography
                 className="profile-title"
                 onClick={() => handleFieldClick("firstName")}
-                sx={{ cursor: "pointer",  }}
+                sx={{ cursor: "pointer" }}
               >
                 {firstName || "First Name"}
               </Typography>
@@ -110,7 +110,7 @@ export default function CreateProfile() {
             ) : (
               <Typography
                 onClick={() => handleFieldClick("lastName")}
-                sx={{ cursor: "pointer",  }}
+                sx={{ cursor: "pointer" }}
               >
                 {lastName || "Last Name"}
               </Typography>
@@ -129,7 +129,7 @@ export default function CreateProfile() {
               <Typography
                 level="h3"
                 onClick={() => handleFieldClick("phone")}
-                sx={{ cursor: "pointer",  }}
+                sx={{ cursor: "pointer" }}
               >
                 {phone || "Phone"}
               </Typography>
@@ -149,7 +149,7 @@ export default function CreateProfile() {
               <Typography
                 level="h3"
                 onClick={() => handleFieldClick("numPosts")}
-                sx={{ cursor: "pointer",  }}
+                sx={{ cursor: "pointer" }}
               >
                 {numPosts || "Number of Posts"}
               </Typography>
@@ -169,7 +169,7 @@ export default function CreateProfile() {
               <Typography
                 level="h4"
                 onClick={() => handleFieldClick("numComments")}
-                sx={{ cursor: "pointer",  }}
+                sx={{ cursor: "pointer" }}
               >
                 {numComments || "Number of Comments"}
               </Typography>
@@ -198,7 +198,11 @@ export default function CreateProfile() {
               variant="contained"
               color="primary"
               type="submit"
-              sx={{ fontFamily: "Raleway", fontWeight: "bolder" }}
+              sx={{
+                backgroundImage: `url("https://i.imgur.com/D61F4wI.jpeg")`,
+                fontFamily: "Raleway",
+                fontWeight: "bolder",
+              }}
             >
               Create Profile
             </Button>

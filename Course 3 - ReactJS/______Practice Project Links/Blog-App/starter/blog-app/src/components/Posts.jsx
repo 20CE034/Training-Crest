@@ -214,10 +214,11 @@ export default function Posts() {
               </FormControl>
             </Box>
             <Link to="/addpost">
-              <Button
+              <Button 
                 size="small"
                 variant="outlined"
                 sx={{
+                  backgroundImage:`url("https://i.imgur.com/D61F4wI.jpeg")`,
                   borderWidth: 2.5,
                   borderColor: "white",
                   fontFamily: "Raleway",

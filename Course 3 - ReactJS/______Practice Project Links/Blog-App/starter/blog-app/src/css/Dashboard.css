@@ -1,12 +1,44 @@
 .dashboard-background {
-    background-image: url('https://i.imgur.com/D61F4wI.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white; /* optional */
-  }
-  
+  /* background-image: url('https://i.imgur.com/D61F4wI.jpeg'); */
+  background-color: #c3dafe;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* optional */
+}
+.appbar-background {
+  background-image: url("https://i.imgur.com/D61F4wI.jpeg");
+  background-size: cover, cover; /* Make sure both background layers cover the element */
+  background-position: center, left; /* Position the radial gradient to start from the left */
+  background-repeat: no-repeat, no-repeat; /* Prevent both layers from repeating */
+}
+.app-container {
+  background: radial-gradient(
+    circle at left,
+    rgb(0, 0, 0, 1),
+    transparent
+  );
+}
+.bottombar-background {
+  background-image: url("https://i.imgur.com/D61F4wI.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-container {
+  font-style: italic;
+  color: white;
+  position: relative;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.9), transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center align the text */
+}

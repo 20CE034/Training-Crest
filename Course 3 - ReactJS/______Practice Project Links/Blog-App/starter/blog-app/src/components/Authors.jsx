@@ -26,7 +26,7 @@ export default function Authors() {
   useEffect(() => {
     dispatch(fetchAuthorsReq());
   }, [dispatch]);
-  
+
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
@@ -69,8 +69,23 @@ export default function Authors() {
               },
             }}
           >
-            <AspectRatio ratio="1" sx={{ width: 90 }}>
+            <AspectRatio
+              ratio="1"
+              sx={{
+                width: 90,
+              }}
+            >
               <img
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  // width: 70,
+                  // height: 70,
+                  borderStyle: "solid",
+                  borderColor: "#78a8f5",
+                  borderRadius: "50%",
+                }}
                 key={author.id}
                 // src={`https://xsgames.co/randomusers/avatar.php?g=pixel/30.jpg`} // Append user id as query parameter to ensure unique image for each user
                 src={`https://xsgames.co/randomusers/avatar.php?g=pixel&user=${author.id}`} // Append user id as query parameter to ensure unique image for each user
@@ -84,7 +99,7 @@ export default function Authors() {
                 level="title-lg"
                 id="card-description"
               >
-                <a style={{ fontSize: "40px" }}>
+                <a style={{ fontSize: "30px" }}>
                   {author.firstName} {author.lastName}
                 </a>
               </Typography>
@@ -94,9 +109,13 @@ export default function Authors() {
                 color="primary"
                 size="l"
                 sx={{
+                  color: "white",
+                  fontWeight: 400,
+                  backgroundImage: `url("https://i.imgur.com/D61F4wI.jpeg")`,
                   "&:hover": {
+                    fontWeight: 900,
                     boxShadow: "md",
-                    borderColor: "yellowgreen",
+                    borderColor: "black",
                     border: "darkblue",
                     borderWidth: "2px",
                   },
