@@ -1,175 +1,130 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import Grid from "@mui/material/Grid";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { fetchPostsReq } from "../store/reducers/postsSlice";
-import GradientCircularProgress from "./GradientCircularProgress";
-import Pagination from "@mui/material/Pagination";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, Link } from "react-router-dom";
+import { Box, Typography, Card, CardContent } from "@mui/material";
+import CommentIcon from "@mui/icons-material/Comment";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function ViewPost() {
   const dispatch = useDispatch();
-  const { posts, loading, error } = useSelector((state) => state.posts);
-  const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5;
+  const { postId } = useParams();
+
+  const postFromStore = useSelector((state) =>
+    state.posts.posts.find((post) => post.id === postId)
+  );
+  const [post, setPost] = React.useState(
+    postFromStore || JSON.parse(localStorage.getItem(`post_${postId}`))
+  );
 
   useEffect(() => {
-    dispatch(fetchPostsReq());
-  }, [dispatch]);
+    if (postFromStore) {
+      setPost(postFromStore);
+      localStorage.setItem(`post_${postId}`, JSON.stringify(postFromStore));
+    } else {
+      if (!post) return <div>Post not found</div>;
+    }
+  }, [postFromStore, postId]);
 
-  if (loading) return <GradientCircularProgress />;
-  if (error) return <div>Error: {error}</div>;
+  const author = post.author || {};
+  console.log(postFromStore);
+  // Popular Authors
+  const mostLikedPosts = useSelector((state) => state.posts);
 
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value);
-  };
+  let mostLikedAuthors = [];
+  if (mostLikedPosts.length > 0) {
+    const firstFivePosts = mostLikedPosts.slice(0, 5);
+    mostLikedAuthors = firstFivePosts.map((post) => ({
+      id: post.author.id,
+      firstName: post.author.firstName,
+      lastName: post.author.lastName,
+    }));
+  }
 
-  // Calculate the posts to display based on the current page
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  console.log(mostLikedAuthors, mostLikedPosts);
 
-  // Calculate top authors based on the number of likes
-  const authorLikes = posts.reduce((acc, post) => {
-    acc[post.authorId] = (acc[post.authorId] || 0) + post.likes;
-    return acc;
-  }, {});
-
-  const topAuthors = Object.keys(authorLikes)
-    .map((authorId) => ({
-      authorId,
-      author: posts.find((post) => post.authorId === authorId).author,
-      likes: authorLikes[authorId],
-    }))
-    .sort((a, b) => b.likes - a.likes)
-    .slice(0, 5);
-  console.log(authorLikes);
   return (
-    <div>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          {currentPosts.map((post) => (
-            <Card key={post.id} sx={{ minWidth: 275, marginBottom: 2 }}>
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 14 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  Written on {new Date(post.datePublished).toLocaleDateString()}
-                </Typography>
-                <Typography variant="h5" component="div">
-                  {post.title}
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                  by {post.author}
-                </Typography>
-                <Typography variant="body2">{post.description}</Typography>
-              </CardContent>
-              <CardActions>
-                <Button
-                  size="small"
-                  sx={{
-                    backgroundImage: `url("https://i.imgur.com/D61F4wI.jpeg")`,
-                  }}
-                >
-                  Learn More
-                </Button>
-              </CardActions>
-            </Card>
-          ))}
-        </Grid>
-        <Grid item xs={4}>
-          <List
-            sx={{ width: "100%", maxWidth: 460, bgcolor: "background.paper" }}
-          >
-            <Typography
-              className="raleway"
-              variant="h4"
-              component="h2"
+    <>
+      <Link to={-1}>
+          <ArrowBackIcon sx={{ fontSize: "30px" }} />
+        </Link>
+      <Box sx={{ display: "flex", padding: 2, mt: 2 }}>
+        <Card sx={{ maxWidth: 875, mr: 5 }}>
+          <CardContent>
+            <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                bgcolor: "background.default",
-                marginBottom: 2,
               }}
             >
-              Top Authors
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{ textTransform: "capitalize", fontWeight: 700 }}
+                className="raleway"
+              >
+                {post.title}
+              </Typography>{" "}
+            </Box>
+            <Typography
+              className="raleway"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                marginLeft: "5px",
+              }}
+            >
+              <AccessTimeIcon sx={{ mr: 1, fontWeight: 900 }} />{" "}
+              {post.datePublished}
             </Typography>
-            {topAuthors.map((author, index) => (
-              <React.Fragment key={index}>
-                <ListItem alignItems="flex-start">
-                  <ListItemAvatar>
-                    <Link to={`/profile/${author.authorId}`}>
-                      <img
-                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&user=${author.authorId}`}
-                        alt="Profile"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: 40,
-                          height: 40,
-                          borderStyle: "solid",
-                          borderColor: "#78a8f5",
-                          borderRadius: "50%",
-                        }}
-                        loading="lazy"
-                      />
-                    </Link>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={author.authorId}
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          sx={{ display: "inline" }}
-                          component="span"
-                          variant="body2"
-                          color="text.primary"
-                        >
-                          {author.authorId}
-                        </Typography>
-                        {" — "}
-                        {`Total likes: ${author.numLikes}`}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                {index < topAuthors.length - 1 && (
-                  <Divider variant="inset" component="li" />
-                )}
-              </React.Fragment>
+            <Typography
+              className="raleway"
+              sx={{ mb: 1.5 }}
+              color="text.secondary"
+            ></Typography>
+            <Typography
+              className="raleway"
+              variant="body2"
+              sx={{ textAlign: "justify" }}
+            >
+              {post.description}
+            </Typography>
+            <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+              <Typography
+                className="raleway"
+                sx={{ display: "flex", alignItems: "center", mr: 2 }}
+              >
+                <FavoriteIcon sx={{ mr: 1 }} />
+                {post.numLikes}
+              </Typography>
+              <Typography
+                className="raleway"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <CommentIcon sx={{ mr: 1, fontWeight: 900 }} />{" "}
+                {post.numComments}
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+        <Card sx={{ minWidth: 375 }}>
+          <CardContent>
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: 700 }}
+              className="raleway"
+            >
+              Most Liked Authors
+            </Typography>
+            {mostLikedAuthors.map((author) => (
+              <Typography key={author.id} className="raleway">
+                {author.firstName} {author.lastName}
+              </Typography>
             ))}
-          </List>
-        </Grid>
-      </Grid>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 2,
-        }}
-      >
-        <Pagination
-          count={Math.ceil(posts.length / postsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-          color="primary"
-        />
+          </CardContent>
+        </Card>
       </Box>
-    </div>
+    </>
   );
 }

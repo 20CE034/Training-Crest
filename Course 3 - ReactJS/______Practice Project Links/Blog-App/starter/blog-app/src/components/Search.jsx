@@ -6,13 +6,11 @@ import { useLocation } from "react-router-dom";
 
 const Searchx = styled("div")(({ theme }) => ({
   position: "relative",
-
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0),
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     width: "auto",
@@ -32,7 +30,6 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "white",
   fontWeight: 400,
-  // color: "inherit",
   width: "100%",
   backgroundColor: alpha(theme.palette.common.white, 0.3), // Adding background color
   borderRadius: theme.shape.borderRadius, // Adding border radius

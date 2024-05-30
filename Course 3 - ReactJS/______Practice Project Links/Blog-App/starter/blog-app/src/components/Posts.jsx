@@ -21,7 +21,7 @@ import { useSearchContext } from "../context/SearchContext";
 
 const columns = [
   {
-    field: "authorId",
+    field: "id",
     headerName: "ID",
     type: "number",
     width: 70,
@@ -57,6 +57,9 @@ const columns = [
     headerName: "Title",
     width: 330,
     headerClassName: "theme-header",
+    renderCell: (params) => (
+      <Link to={`/post/${params.row.id}`} style={{textTransform:"capitalize"}}>{params.value}</Link>
+    ),
   },
   {
     field: "numLikes",
@@ -102,15 +105,18 @@ export default function Posts() {
   const handleChange = (event) => {
     setSortChoice(event.target.value);
   };
-
+console.log(filteredPosts);
   return (
     <div style={{ height: 500, width: "100%" }}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{
-          bgcolor: "#78a8f5",
-          boxShadow: 29,
-          borderTopRightRadius: "20px"
-        }}>
+        <AppBar
+          position="static"
+          sx={{
+            bgcolor: "#78a8f5",
+            boxShadow: 29,
+            borderTopRightRadius: "20px",
+          }}
+        >
           <Toolbar variant="dense" sx={{ borderColor: "white" }}>
             <Box sx={{ minWidth: 120, color: "white", borderColor: "white" }}>
               <FormControl
@@ -214,11 +220,11 @@ export default function Posts() {
               </FormControl>
             </Box>
             <Link to="/addpost">
-              <Button 
+              <Button
                 size="small"
                 variant="outlined"
                 sx={{
-                  backgroundImage:`url("https://i.imgur.com/D61F4wI.jpeg")`,
+                  backgroundImage: `url("https://i.imgur.com/D61F4wI.jpeg")`,
                   borderWidth: 2.5,
                   borderColor: "white",
                   fontFamily: "Raleway",
@@ -258,8 +264,8 @@ export default function Posts() {
                 sortChoice === 10
                   ? "numLikes"
                   : sortChoice === 20
-                    ? "numComments"
-                    : "",
+                  ? "numComments"
+                  : "",
               sort: "desc",
             },
           ]}

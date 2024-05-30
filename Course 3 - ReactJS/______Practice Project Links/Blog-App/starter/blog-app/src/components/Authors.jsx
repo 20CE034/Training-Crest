@@ -14,7 +14,7 @@ import Stack from "@mui/material/Stack";
 import { useSearchContext } from "../context/SearchContext";
 import GradientCircularProgress from "./GradientCircularProgress";
 
-const itemsPerPage = 8;
+const itemsPerPage = 12;
 
 export default function Authors() {
   const [currentPage, setCurrentPage] = useState(1);

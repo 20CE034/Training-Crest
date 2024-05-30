@@ -1,0 +1,8 @@
+.search-container {
+  opacity: 0;
+  transition: opacity 0.9s ease; /* Apply transition to opacity property */
+}
+
+.search-container.visible {
+  opacity: 1; /* Show the search container when it has the "visible" class */
+}

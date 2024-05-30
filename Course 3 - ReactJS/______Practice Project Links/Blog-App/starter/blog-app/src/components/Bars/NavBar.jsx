@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import "../../css/NavBar.css"
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,7 +11,12 @@ import { useLocation } from "react-router-dom";
 
 export default function NavBar() {
   const location = useLocation();
-  const currPath = location.pathname;
+  const [showSearch, setShowSearch] = useState(false);
+
+  // Listen to changes in location and update showSearch state accordingly
+  useEffect(() => {
+    setShowSearch(location.pathname === "/authors" || location.pathname === "/posts");
+  }, [location]);
 
   return (
     <Box
@@ -40,7 +47,6 @@ export default function NavBar() {
             sx={{
               fontSize: "40px",
               fontWeight: 1000,
-
               display: { xs: "none", sm: "block" },
             }}
           >
@@ -77,11 +83,10 @@ export default function NavBar() {
             </Link>
           </Typography>
           <Typography sx={{ mx: 6 }}>
-            {currPath === "/authors" || currPath === "/posts" ? (
+            <div className={`search-container ${showSearch ? 'visible' : ''}`}>
               <Search />
-            ) : null}
+            </div>
           </Typography>
-          {/* <Box sx={{ flexGrow: 1 }} /> */}
         </Toolbar>
       </AppBar>
     </Box>

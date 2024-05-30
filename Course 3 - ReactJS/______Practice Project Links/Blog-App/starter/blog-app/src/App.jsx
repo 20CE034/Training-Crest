@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/post/:postId",
-        element: <PostPage />,
+        element: <ViewPost />,
       },
       {
         path: "/authors",
@@ -45,10 +45,6 @@ const router = createBrowserRouter([
       {
         path: "/addpost",
         element: <BasicFormControl />,
-      },
-      {
-        path: "/viewpost",
-        element: <ViewPost />,
       },
     ],
   },
