@@ -10,8 +10,8 @@ Reporting to - Nishant Vichhi [E], Trusha Patel[I]
 
 ## Course 1 & 2 [HTML/CSS/JavaScript]
 
-Quiz App - https://20ce034.github.io/How-much-of-NEWS-are-you/
-3nplusone - https://20ce034.github.io/3nplusone/
+- Quiz App - https://20ce034.github.io/How-much-of-NEWS-are-you/
+- 3nplusone - https://20ce034.github.io/3nplusone/
 
 ## Course 3 [ReactJs/Redux/Saga]
 
@@ -37,6 +37,6 @@ Quiz App - https://20ce034.github.io/How-much-of-NEWS-are-you/
 
 - [x] Docker Mastery
 
-- [x] Next.js & React - The Complete Guide `active`
+- [x] Next.js & React - The Complete Guide 
       
-- [ ] Node.JS
+- [ ] Node.JS  `active`
